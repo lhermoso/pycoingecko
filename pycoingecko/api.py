@@ -1,5 +1,6 @@
 import json
-
+from dotenv import load_dotenv
+import os
 import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
@@ -12,6 +13,8 @@ class CoinGeckoAPI:
     __PRO_API_URL_BASE = 'https://pro-api.coingecko.com/api/v3/'
 
     def __init__(self, api_key: str = '', retries=5):
+        if api_key == '':
+            api_key = os.environ.get('COINGECKO_API_KEY','')
         self.api_key = api_key
         if api_key:
             self.api_base_url = self.__PRO_API_URL_BASE

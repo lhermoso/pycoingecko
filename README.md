@@ -28,6 +28,10 @@ For users with **Pro API** Key:
 ```python
 from pycoingecko import CoinGeckoAPI
 cg = pycoingecko.CoinGeckoAPI(api_key='YOUR_API_KEY')
+
+# or you can set the API key as an environment variable "COINGECK_API_KEY"
+os.environ["COINGECKO_API_KEY"] = "YOUR_API_KEY"
+cg = CoinGeckoAPI()
 ```
 
 ### Examples
