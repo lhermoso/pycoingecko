@@ -352,8 +352,7 @@ class CoinGeckoAPI:
 
     @func_args_preprocessing
     def get_nfts_by_asset_platform_id_and_contract_address(self, asset_platform_id, contract_address, **kwargs):
-        api_url = '{0}nfts/{asset_platform_id}/contract/{contract_address}'.format(self.api_base_url, asset_platform_id,
-                                                                                   contract_address)
+        api_url = f'{self.api_base_url}nfts/{asset_platform_id}/contract/{contract_address}'
         api_url = self.__api_url_params(api_url, kwargs)
         return self.__request(api_url)
 
@@ -374,9 +373,7 @@ class CoinGeckoAPI:
     def get_ntfs_market_chart_by_asset_platform_id_and_contract_address(self, asset_platform_id, contract_address, days,
                                                                         **kwargs):
         kwargs['days'] = days
-        api_url = '{0}nfts/{asset_platform_id}/contract/{contract_address}/market_chart'.format(self.api_base_url,
-                                                                                                asset_platform_id,
-                                                                                                contract_address)
+        api_url = f'{self.api_base_url}nfts/{asset_platform_id}/contract/{contract_address}/market_chart'
         api_url = self.__api_url_params(api_url, kwargs)
         return self.__request(api_url)
 
@@ -384,9 +381,10 @@ class CoinGeckoAPI:
     def get_nfts_tickers(self, id, **kwargs):
         api_url = '{0}nfts/{1}/tickers'.format(self.api_base_url, id)
         api_url = self.__api_url_params(api_url, kwargs)
-        return self.__request(api_url  # ---------- GENERAL ----------#
-                              @ func_args_preprocessing
+        return self.__request(api_url)
 
+        # ---------- GENERAL ----------#
+    @ func_args_preprocessing
     def get_exchange_rates(self, **kwargs):
         api_url = '{0}exchange_rates'.format(self.api_base_url)
         api_url = self.__api_url_params(api_url, kwargs)
