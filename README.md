@@ -69,6 +69,7 @@ https://www.coingecko.com/en/api/documentation
 
 ### Endpoints included
 > :warning: **Endpoints documentation**: To make sure that you are using properly each endpoint you should check the [API documentation](https://www.coingecko.com/en/api/documentation). Return behaviour and parameters of the endpoints, such as *pagination*, might have changed. <br> Any **optional parameters** defined in CoinGecko API doc can be passed as function parameters using same parameters names with the API *(see Examples above)*.
+
 <details><summary>ping</summary>
 <p>
 
@@ -102,42 +103,57 @@ https://www.coingecko.com/en/api/documentation
   ```python
   cg.get_coins_list()
   ```
-
 * **/coins/markets** (List all supported coins price, market cap, volume, and market related data)
-  ```python 
+  ```python
   cg.get_coins_markets()
   ```
 * **/coins/{id}** (Get current data (name, price, market, ... including exchange tickers) for a coin)
-  ```python 
+  ```python
   cg.get_coin_by_id()
   ```
 * **/coins/{id}/tickers** (Get coin tickers (paginated to 100 items))
-  ```python 
+  ```python
   cg.get_coin_ticker_by_id()
   ```
 * **/coins/{id}/history** (Get historical data (name, price, market, stats) at a given date for a coin)
-  ```python 
+  ```python
   cg.get_coin_history_by_id()
   ```
 * **/coins/{id}/market_chart** (Get historical market data include price, market cap, and 24h volume (granularity auto))
-  ```python 
+  ```python
   cg.get_coin_market_chart_by_id()
   ```
 * **/coins/{id}/market_chart/range** (Get historical market data include price, market cap, and 24h volume within a range of timestamp (granularity auto))
-  ```python 
+  ```python
   cg.get_coin_market_chart_range_by_id()
   ```
-
-[//]: # (* **/coins/{id}/status_updates** &#40;Get status updates for a given coin &#40;beta&#41;&#41;)
-
-[//]: # (  ```python)
-
-[//]: # (  cg.get_coin_status_updates_by_id&#40;&#41;)
-
-[//]: # (  ```)
 * **/coins/{id}/ohlc** (Get coin's OHLC (beta))
   ```python
   cg.get_coin_ohlc_by_id()
+  ```
+* **/coins/top_gainers_losers** (Query the top 30 coins with the largest price gain and loss by a specific time duration)
+  ```python
+  cg.get_coin_top_gainers_losers()
+  ```
+* **/coins/list/new** (Query the latest 200 coins that recently listed on CoinGecko)
+  ```python
+  cg.get_coins_list_new()
+  ```
+* **/coins/{id}/circulating_supply_chart** (Query historical circulating supply of a coin by number of days away from now)
+  ```python
+  cg.get_coin_circulating_supply_chart()
+  ```
+* **/coins/{id}/circulating_supply_chart/range** (Query historical circulating supply of a coin within a range of timestamp)
+  ```python
+  cg.get_coin_circulating_supply_chart_range()
+  ```
+* **/coins/{id}/total_supply_chart** (Query historical total supply of a coin by number of days away from now)
+  ```python
+  cg.get_coin_total_supply_chart()
+  ```
+* **/coins/{id}/total_supply_chart/range** (Query historical total supply of a coin within a range of timestamp)
+  ```python
+  cg.get_coin_total_supply_chart_range()
   ```
 </details>
 
@@ -148,7 +164,7 @@ https://www.coingecko.com/en/api/documentation
   ```python
   cg.get_coin_info_from_contract_address_by_id()
   ```
-* **/coins/{id}/contract/{contract_address}/market_chart/** (Get historical market data include price, market cap, and 24h volume (granularity auto) from a contract address)
+* **/coins/{id}/contract/{contract_address}/market_chart** (Get historical market data include price, market cap, and 24h volume (granularity auto) from a contract address)
   ```python
   cg.get_coin_market_chart_from_contract_address_by_id()
   ```
@@ -165,6 +181,10 @@ https://www.coingecko.com/en/api/documentation
   ```python
   cg.get_asset_platforms()
   ```
+* **/token_lists/{asset_platform_id}/all.json** (List all tokens of a blockchain network (asset platform) that is supported by Ethereum token list standard)
+  ```python
+  cg.get_asset_platform_by_id()
+  ```
 </details>
 
 <details><summary>categories</summary>
@@ -174,7 +194,7 @@ https://www.coingecko.com/en/api/documentation
   ```python
   cg.get_coins_categories_list()
   ```
-* **coins/categories** (List all categories with market data)
+* **/coins/categories** (List all categories with market data)
   ```python
   cg.get_coins_categories()
   ```
@@ -199,58 +219,31 @@ https://www.coingecko.com/en/api/documentation
   ```python
   cg.get_exchanges_tickers_by_id()
   ```
-
-[//]: # (* **/exchanges/{id}/status_updates** &#40;Get status updates for a given exchange &#40;beta&#41;&#41;)
-
-[//]: # (  ```python)
-
-[//]: # (  cg.get_exchanges_status_updates_by_id&#40;&#41;)
-
-[//]: # (  ```)
-* **/exchanges/{id}/volume_chart** (Get volume_chart data for a given exchange)
+* **/exchanges/{id}/volume_chart** (Get volume chart data for a given exchange)
   ```python
   cg.get_exchanges_volume_chart_by_id()
   ```
+* **/exchanges/{id}/volume_chart/range** (Get volume chart data for a given exchange within a time range)
+  ```python
+  cg.get_exchanges_volume_chart_by_id_within_time_range()
+  ```
 </details>
-
-[//]: # (<details><summary>finance</summary>)
-
-[//]: # (<p>)
-
-[//]: # ()
-[//]: # (* **/finance_platforms** &#40;List all finance platforms&#41;)
-
-[//]: # (  ```python)
-
-[//]: # (  cg.get_finance_platforms&#40;&#41;)
-
-[//]: # (  ```)
-
-[//]: # (* **/finance_products** &#40;List all finance products&#41;)
-
-[//]: # (  ```python)
-
-[//]: # (  cg.get_finance_products&#40;&#41;)
-
-[//]: # (  ```)
-
-[//]: # (</details>)
 
 <details><summary>indexes</summary>
 <p>
 
 * **/indexes** (List all market indexes)
-```python
-cg.get_indexes()
-```
+  ```python
+  cg.get_indexes()
+  ```
 * **/indexes/{market_id}/{id}** (Get market index by market id and index id)
-```python
-cg.get_indexes_by_market_id_and_index_id()
-```
+  ```python
+  cg.get_indexes_by_market_id_and_index_id()
+  ```
 * **/indexes/list** (List market indexes id and name)
-```python
-cg.get_indexes_list()
-```
+  ```python
+  cg.get_indexes_list()
+  ```
 </details>
 
 <details><summary>derivatives</summary>
@@ -281,61 +274,32 @@ cg.get_indexes_list()
   ```python
   cg.get_nfts_list()
   ```
-* **/nfts/{id}** (Get current data (name, price_floor, volume_24h ...) for an NFT collection. native_currency (string) is only a representative of the currency.)
+* **/nfts/{id}** (Get current data (name, price_floor, volume_24h ...) for an NFT collection)
   ```python
   cg.get_nfts_by_id()
   ```
-* **/nfts/{asset_platform_id}/contract/{contract_address}** (Get current data (name, price_floor, volume_24h ...) for an NFT collection. native_currency (string) is only a representative of the currency)
+* **/nfts/{asset_platform_id}/contract/{contract_address}** (Get current data (name, price_floor, volume_24h ...) for an NFT collection)
   ```python
-  cg.get_nfts_collection_by_asset_platform_id_and_contract_address()
+  cg.get_nfts_by_asset_platform_id_and_contract_address()
   ```
+* **/nfts/markets** (Query all the supported NFT collections with floor price, market cap, volume, and market related data)
+  ```python
+  cg.get_nfts_markets()
+  ```
+* **/nfts/{id}/market_chart** (Query historical market data of an NFT collection, including floor price, market cap, and 24h volume)
+  ```python
+  cg.get_nfts_market_chart_by_id()
+  ```
+* **/nfts/{asset_platform_id}/contract/{contract_address}/market_chart** (Query historical market data of an NFT collection, including floor price, market cap, and 24h volume by contract address)
+  ```python
+  cg.get_nfts_market_chart_by_asset_platform_id_and_contract_address()
+  ```
+* **/nfts/{id}/tickers** (Query the latest floor price and 24h volume of an NFT collection, on each NFT marketplace)
+  ```python
+  cg.get_nfts_tickers()
+  ```
+
 </details>
-
-[//]: # (<details><summary>status_updates</summary>)
-
-[//]: # (<p>)
-
-[//]: # ()
-[//]: # (* **/status_updates** &#40;List all status_updates with data &#40;description, category, created_at, user, user_title and pin&#41;&#41;)
-
-[//]: # (  ```python)
-
-[//]: # (  cg.get_status_updates&#40;&#41;)
-
-[//]: # (  ```)
-
-[//]: # (</details>)
-
-[//]: # (<details><summary>events</summary>)
-
-[//]: # (<p>)
-
-[//]: # ()
-[//]: # (* **/events** &#40;Get events, paginated by 100&#41;)
-
-[//]: # (  ```python)
-
-[//]: # (  cg.get_events&#40;&#41;)
-
-[//]: # (  ```)
-
-[//]: # (* **/events/countries** &#40;Get list of event countries&#41;)
-
-[//]: # (  ```python)
-
-[//]: # (  cg.get_events_countries&#40;&#41;)
-
-[//]: # (  ```)
-
-[//]: # (* **/events/types** &#40;Get list of events types&#41;)
-
-[//]: # (  ```python)
-
-[//]: # (  cg.get_events_types&#40;&#41;)
-
-[//]: # (  ```)
-
-[//]: # (</details>)
 
 <details><summary>exchange_rates</summary>
 <p>
@@ -349,15 +313,10 @@ cg.get_indexes_list()
 <details><summary>search</summary>
 <p>
 
-* **/search** (Search for coins, categories and markets on CoinGecko)
+* **/search** (Search for coins, categories, and markets on CoinGecko)
   ```python
   cg.search()
   ```
-</details>
-
-<details><summary>trending</summary>
-<p>
-
 * **/search/trending** (Get trending search coins (Top-7) on CoinGecko in the last 24 hours)
   ```python
   cg.get_search_trending()
@@ -367,23 +326,84 @@ cg.get_indexes_list()
 <details><summary>global</summary>
 <p>
 
-  - **/global** (Get cryptocurrency global data)
-    ```python
-    cg.get_global()
-    ```
-  - **/global/decentralized_finance_defi** (Get cryptocurrency global decentralized finance(defi) data)
-    ```python
-    cg.get_global_decentralized_finance_defi()
-    ```
+* **/global** (Get cryptocurrency global data)
+  ```python
+  cg.get_global()
+  ```
+* **/global/decentralized_finance_defi** (Get cryptocurrency global decentralized finance (defi) data)
+  ```python
+  cg.get_global_decentralized_finance_defi()
+  ```
+* **/global/market_cap_chart** (Get cryptocurrency global market cap chart data)
+  ```python
+  cg.get_global_market_cap_chart()
+  ```
 </details>
 
 <details><summary>companies (beta)</summary>
 <p>
 
-  - **/companies/public_treasury/{coin_id}** (Get public companies data)
-    ```python
-    cg.get_companies_public_treasury_by_coin_id()
-    ```
+* **/companies/public_treasury/{coin_id}** (Get public companies data)
+  ```python
+  cg.get_companies_public_treasury_by_coin_id()
+  ```
+</details>
+
+<details><summary>onchain dex endpoints (geckoterminal)</summary>
+<p>
+
+* **/onchain/simple/networks/{network}/token_price/{token_address}** (Get token price based on the provided token contract address on a network)
+  ```python
+  cg.get_onchain_token_price()
+  ```
+* **/onchain/networks** (Query all the supported networks on GeckoTerminal)
+  ```python
+  cg.get_onchain_networks()
+  ```
+* **/onchain/networks/{network}/dexes** (Query all the supported decentralized exchanges (dexes) based on the provided network)
+  ```python
+  cg.get_onchain_dexes()
+  ```
+* **/onchain/networks/trending_pools** (Query all the trending pools across all networks)
+  ```python
+  cg.get_onchain_trending_pools()
+  ```
+* **/onchain/networks/{network}/trending_pools** (Query the trending pools based on the provided network)
+  ```python
+  cg.get_onchain_network_trending_pools()
+  ```
+* **/onchain/networks/{network}/pools/{pool_address}** (Query the specific pool based on the provided network and pool address)
+  ```python
+  cg.get_onchain_pool()
+  ```
+* **/onchain/networks/{network}/pools/multi/{pool_addresses}** (Query multiple pools based on the provided network and pool address)
+  ```python
+  cg.get_onchain_multi_pools()
+  ```
+* **/onchain/networks/{network}/pools** (Query all the top pools based on the provided network)
+  ```python
+  cg.get_onchain_top_pools()
+  ```
+* **/onchain/networks/{network}/dexes/{dex}/pools** (Query all the top pools based on the provided network and decentralized exchange (dex))
+  ```python
+  cg.get_onchain_dex_top_pools()
+  ```
+* **/onchain/networks/{network}/new_pools** (Query all the latest pools based on the provided network)
+  ```python
+  cg.get_onchain_new_pools()
+  ```
+* **/onchain/networks/new_pools** (Query all the latest pools across all networks)
+  ```python
+  cg.get_onchain_all_new_pools()
+  ```
+* **/onchain/search/pools** (Search for pools on a network)
+  ```python
+  cg.search_onchain_pools()
+  ```
+* **/onchain/networks/{network}/tokens/{token_address}/pools** (Query top pools based on the provided token contract address on a network)
+  ```python
+  cg.get_onchain_token_pools()
+  ```
 </details>
 
 ### Test
